@@ -10,6 +10,7 @@
 
 (deftest has-tools-jar
   (let [tools-jar (jdk-find "tools.jar")]
+    (prn tools-jar)
     (is tools-jar)))
 
 (deftest has-src-zip
