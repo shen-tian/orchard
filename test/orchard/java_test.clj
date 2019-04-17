@@ -8,6 +8,14 @@
 (def jdk-parser? (or (>= java-api-version 9) jdk-tools))
 (def jdk-sources? (and jdk-sources (< java-api-version 9))) ; TODO modular JDK (9+) not yet supported
 
+(deftest has-tools-jar
+  (let [tools-jar (jdk-find "tools.jar")]
+    (is tools-jar)))
+
+(deftest has-src-zip
+  (let [src-zip (jdk-find "src.zip")]
+    (is src-zip)))
+
 (deftest source-info-test
   (let [resolve-src (comp (fnil io/resource "-none-") :file source-info)]
     (when jdk-parser?
